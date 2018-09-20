@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row col-md-12">
+      <div class="white-box col-md-12">
+        <h3 class="box-title">File upload</h3>
+
+        <form #fileForm="ngForm" novalidate id="fileForm">
+          <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label>* File type</label>
+                  <div class="form-group ">
+                    <select class="custom-select col-12" id="addres" name="type" #type="ngModel" [(ngModel)]="file_data.type" required>
+                      <option value="" *ngFor="let t of file_types">File type</option>
+
+                      <option value="{{t.key}}" *ngFor="let t of file_types">{{t.value}}</option>
+
+
+                    </select>
+                    <div *ngIf="type.invalid && (type.dirty || type.touched)" class="text-danger">
+                      <div *ngIf="type.errors.required">File Type is required.</div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                  <label>* Name</label>
+                  <input class="form-control" placeholder="Name " name="name" type="text" #name="ngModel" [(ngModel)]="file_data.name" required>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                    <div *ngIf="name.errors.required"> Name is required.</div>
+
+                  </div>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                  <label>* Number</label>
+                  <input class="form-control" placeholder="Number " name="num" type="text" #num="ngModel" [(ngModel)]="file_data.number" required>
+                  <div *ngIf="num.invalid && (num.dirty || num.touched)" class="text-danger">
+                    <div *ngIf="num.errors.required"> Number is required.</div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <h1 class="title" style="cursor:pointer">
+                <a class="btn btn-info btn-lg" #fileUploader id="fileUploader">
+                  <span class="glyphicon glyphicon-cloud-upload"></span>Upload files
+                </a>
+              </h1>
+
+
+              <div class="flow-progress">
+                <table>
+                  <!-- <tr>
+                    <td width="100%"><div class="progress-container"><div class="progress-bar"></div></div></td>
+                    <td class="progress-text" nowrap="nowrap"></td>
+                    <td class="progress-pause" nowrap="nowrap">
+                      <a  (click)="this.fileUploaderObj.upload(); return(false);" class="progress-resume-link"><img src="resume.png" title="Resume upload" /></a>
+                      <a  (click)="this.fileUploaderObj.pause(); return(false);" class="progress-pause-link"><img src="pause.png" title="Pause upload" /></a>
+                      <a (click)="this.fileUploaderObj.cancel(); return(false);" class="progress-cancel-link"><img src="cancel.png" title="Cancel upload" /></a>
+                    </td>
+                  </tr> -->
+                </table>
+              </div>
+
+              <ul class="flow-list"></ul>
+              <div class="flow-error">
+              </div>
+              <div class="form-group row">
+                <button type="submit" (click)="startFileUpload()" [disabled]="!fileForm.form.valid" class="btn btn-success">Submit</button>
+                <button style="margin-left: 10px;" class="btn btn-danger" (click)="closeForm()">Cancel</button>
+
+              </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
